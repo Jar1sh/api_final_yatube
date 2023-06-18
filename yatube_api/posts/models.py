@@ -70,7 +70,7 @@ class Post(models.Model):
         ordering = ('id',)
 
     def __str__(self):
-        return self.text
+        return self.text[:15]
 
 
 class Comment(models.Model):
@@ -124,7 +124,7 @@ class Follow(models.Model):
         constraints = (
             models.UniqueConstraint(
                 fields=('user', 'following'),
-                name='unique_follow'
+                name='uq_user_author'
             ),)
         verbose_name = 'Подписка'
         verbose_name_plural = 'Подписки'
